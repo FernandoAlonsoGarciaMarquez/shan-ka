@@ -1,0 +1,963 @@
+@import "tailwindcss";
+
+/* Шрифты ----------------------------------------------------- */
+
+.font-chinese {
+  font-family: 'MyFont', sans-serif;
+  /* font-weight: 600; */
+}
+
+/* Шрифты ----------------------------------------------------- */
+
+
+/* Цвета ----------------------------------------------------- */
+
+:root {
+  --sidebar-width: clamp(168px, 86vw, 188px);
+
+
+  --bg-1: #fff7f1;
+  --bg-2: #fff7f1;
+  
+  --nav-panel-bg: #ffffff00;
+
+  --nav-panel-toggle-button-bg: #cbe7eeb7;  
+  
+  
+  --nav-panel-button: #446b771b;
+  --nav-panel-button-hover: #d3dfde;
+  --nav-panel-button-active: #e0eaec;
+  
+  
+  --card-origin-bg: #ffffff00;
+  --card-popup-bg: #fff7f1;
+  --card-explore-bg: #fff7f1;
+
+
+  --card-origin-bg-shadow: #cacaca00;
+  --card-popup-bg-shadow: #e7e0db;
+  --card-explore-bg-shadow: #eee7e2;
+
+  
+  --card-text: #707f8d;
+  --card-text-shadow: #a79c9c46;
+  
+  
+  --card-popup-move-btn: #c7e9ef;
+  --card-popup-move-btn-hover: #c7f4fc;
+  --card-explore-move-btn: #f1f1f1;
+  --card-explore-move-btn-hover: #c7f4fc;
+
+  --card-play-voice: #c4dfe4;
+
+
+  --sidebar-bg: #cfcfcf00;
+
+  --sidebar-menu-btn-active-bg: #e0eaec;
+  --sidebar-menu-btn-active-text: #687892;
+
+  --sidebar-menu-btn-inactive-bg-hover: #446b771b;
+  --sidebar-menu-btn-inactive-text: #617a89;
+  --sidebar-menu-btn-inactive-text-hover: #7bafb2;
+
+  --sidebar-menu-separator: #dcdbd6c1;
+
+  --sidebar-menu-bottom-btn-bg-hover: #ebece0;
+  --sidebar-menu-bottom-btn-text: #b2867b;
+  --sidebar-menu-bottom-btn-text-hover: #b2867b;
+
+}
+
+
+[data-theme="citrus"] {
+  /* --sidebar-width: clamp(170px, 60vw, 280px); */
+ --sidebar-width: clamp(168px, 86vw, 188px);
+
+
+
+  --bg-1: #2a2a2a;
+  --bg-2: #2a2a2a;
+  
+  
+  --nav-panel-bg: #ffffff00;
+
+  /* --nav-panel-toggle-button-bg: #88897cc1;  
+  
+  --nav-panel-button: #65655c;
+  --nav-panel-button-hover: #847660;
+  --nav-panel-button-active: #8b8579d7; */
+
+  --nav-panel-toggle-button-bg: #44443fc1;  
+  
+  --nav-panel-button: #31312f;
+  --nav-panel-button-hover: #5a5041;
+  --nav-panel-button-active: #393935;
+
+  /* --nav-panel-button-active: #45453e; */
+  
+  
+  
+  
+  
+  --card-origin-bg: #2a2a2a;
+  --card-popup-bg: #2a2a2a;
+  --card-explore-bg: #2a2a2a;
+
+  --card-origin-bg-shadow: #cacaca00;
+  --card-popup-bg-shadow: #433f3c;
+  --card-explore-bg-shadow: #2f2e2c;
+
+  
+  --card-text: #8a8a72;
+  --card-text-shadow: #a79c9c46;
+  
+  
+  --card-popup-move-btn: #484641;
+  --card-popup-move-btn-hover: #393832;
+  --card-explore-move-btn: #2d2d2d;
+  /* --card-explore-move-btn: #2d2d2c; */
+  --card-explore-move-btn-hover: #393832;
+  
+  
+
+  --card-play-voice: #393832;
+
+  
+
+
+  --sidebar-bg: #cfcfcf00;
+
+  --sidebar-menu-btn-active-bg: #393932;
+  --sidebar-menu-btn-active-text: #8a8a72;
+
+  --sidebar-menu-btn-inactive-bg-hover: #7775441b;
+  --sidebar-menu-btn-inactive-text: #8a8a72;
+  --sidebar-menu-btn-inactive-text-hover: #8a8a72;
+
+  --sidebar-menu-separator: #373630c1;
+
+  --sidebar-menu-bottom-btn-bg-hover: #393932;
+  --sidebar-menu-bottom-btn-text: #8a8a72;
+  --sidebar-menu-bottom-btn-text-hover: #8a8a72;
+
+}
+
+
+
+[data-theme="original"] {
+  /* --sidebar-width: clamp(170px, 60vw, 280px); */
+ --sidebar-width: clamp(168px, 86vw, 188px);
+
+
+
+  --bg-1: #fff7f1;
+  --bg-2: #fff7f1;
+  
+  --nav-panel-bg: #ffffff00;
+
+  --nav-panel-toggle-button-bg: #d7d8c8c1;  
+  
+  --nav-panel-button: #ebece0;
+  --nav-panel-button-hover: #e9bab036;
+  --nav-panel-button-active: #ded1bbd7;
+  
+  
+  --card-origin-bg: #ffffff00;
+  --card-popup-bg: #fff7f1;
+  --card-explore-bg: #fff7f1;
+
+  --card-origin-bg-shadow: #cacaca00;
+  --card-popup-bg-shadow: #e7e0db;
+  --card-explore-bg-shadow: #e7e0db;
+
+  
+  --card-text: #b4a7b0;
+  --card-text-shadow: #a79c9c46;
+  
+  
+  --card-popup-move-btn: #f2e9e3;
+  --card-popup-move-btn-hover: #f1f2dd;
+
+  --card-explore-move-btn: #f2e9e3;
+  --card-explore-move-btn-hover: #f1f2dd;
+
+  --card-play-voice: #e3e4d6c1;
+
+
+  --sidebar-bg: #cfcfcf00;
+
+  --sidebar-menu-btn-active-bg: #ebece0;
+  --sidebar-menu-btn-active-text: #b2867b;
+
+  --sidebar-menu-btn-inactive-bg-hover: #7775441b;
+  --sidebar-menu-btn-inactive-text: #b2867b;
+  --sidebar-menu-btn-inactive-text-hover: #b2867b;
+
+  --sidebar-menu-separator: #dcdbd6c1;
+
+  --sidebar-menu-bottom-btn-bg-hover: #ebece0;
+  --sidebar-menu-bottom-btn-text: #b2867b;
+  --sidebar-menu-bottom-btn-text-hover: #b2867b;
+
+}
+
+
+
+
+[data-theme="lilac"] {
+  /* --sidebar-width: clamp(170px, 60vw, 280px); */
+  --sidebar-width: clamp(168px, 86vw, 188px);
+
+
+  --bg-1: #d8dbcc;
+  --bg-2: #e1e2e1;
+  
+  --nav-panel-bg: #a7899526;
+  --nav-panel-toggle-button-bg: #a7899554;
+  
+  
+  
+  --nav-panel-button: #d6dbc9;
+  --nav-panel-button-hover: #f7fae536;
+  --nav-panel-button-active: #dbe4cf;
+  
+  
+  --card-popup-bg: #e5e6de;
+  --card-origin-bg: #e5e6de;
+  --card-explore-bg: #e5e6de;
+  
+
+  --card-text: #8a4776a8;
+  --card-text-shadow: #8b2f18ab;
+  
+  --card-popup-move-btn: #082b152a;
+  --card-popup-move-btn-hover: #cbbdbb;
+  --card-explore-move-btn: #082b152a;
+  --card-explore-move-btn-hover: #cbbdbb;
+
+  --card-play-voice: #3a172036;
+
+  --sidebar-bg: #967f7927;
+
+  --sidebar-menu-btn-active-bg: #d4d8c3;
+  --sidebar-menu-btn-active-text: #8b2f18;
+
+  --sidebar-menu-btn-inactive-bg-hover: #7775441b;
+  --sidebar-menu-btn-inactive-text: #8b2f18ab;
+  --sidebar-menu-btn-inactive-text-hover: #8b2f18ab;
+
+  --sidebar-menu-separator: #72bbc53d;
+
+  --sidebar-menu-bottom-btn-bg-hover: #72bbc53d;
+  --sidebar-menu-bottom-btn-text: #8b2f18ab;
+  --sidebar-menu-bottom-btn-text-hover: #8b2f18ab;
+
+}
+
+
+
+
+@theme inline {
+  --color-bg-1: var(--bg-1);
+  --color-bg-2: var(--bg-2);
+
+  --color-nav-panel-toggle-button-bg: var(--nav-panel-toggle-button-bg);
+  --color-nav-panel-bg: var(--nav-panel-bg);
+
+  --color-nav-panel-button: var(--nav-panel-button);
+  --color-nav-panel-button-hover: var(--nav-panel-button-hover);
+  --color-nav-panel-button-active: var(--nav-panel-button-active);
+
+  --color-card-popup-bg: var(--card-popup-bg);
+  --color-card-origin-bg: var(--card-origin-bg);
+  --color-card-explore-bg: var(--card-explore-bg);
+
+
+  --color-card-origin-bg-shadow: var(--card-origin-bg-shadow);
+  --color-card-popup-bg-shadow: var(--card-popup-bg-shadow);
+  --color-card-explore-bg-shadow: var(--card-explore-bg-shadow);
+
+  --color-card-text: var(--card-text);
+  --color-card-text-shadow: var(--card-text-shadow);
+
+  --color-card-popup-move-btn: var(--card-popup-move-btn);
+  --color-card-popup-move-btn-hover: var(--card-popup-move-btn-hover);
+  --color-card-explore-move-btn: var(--card-explore-move-btn);
+  --color-card-explore-move-btn-hover: var(--card-explore-move-btn-hover);
+
+  --color-card-play-voice: var(--card-play-voice);
+
+
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-sidebar-menu-btn-active-bg: var(--sidebar-menu-btn-active-bg);
+  --color-sidebar-menu-btn-active-text: var(--sidebar-menu-btn-active-text);
+
+  --color-sidebar-menu-btn-inactive-bg-hover: var(--sidebar-menu-btn-inactive-bg-hover);
+  --color-sidebar-menu-btn-inactive-text: var(--sidebar-menu-btn-inactive-text);
+  --color-sidebar-menu-btn-inactive-text-hover: var(--sidebar-menu-btn-inactive-text-hover);
+
+  --color-sidebar-menu-separator: var(--sidebar-menu-separator);
+
+  --color-sidebar-menu-bottom-btn-bg-hover: var(--sidebar-menu-bottom-btn-bg-hover);
+  --color-sidebar-menu-bottom-btn-text: var(--sidebar-menu-bottom-btn-text);
+  --color-sidebar-menu-bottom-btn-text-hover: var(--sidebar-menu-bottom-btn-text-hover);
+
+
+
+}
+
+/* Цвета ----------------------------------------------------- */
+
+
+
+body {
+  background: var(--bg-1);
+  color: var(--card-text);
+}
+
+::-moz-selection { /* Code for Firefox */
+  /* color: red; */
+  background: var(--nav-panel-button);
+}
+
+::selection {
+  /* color: red; */
+  background: var(--nav-panel-button);
+}
+
+
+
+/* Tailwind classess  -----------------------------------------------------*/
+
+
+@layer components {
+
+  .gLayoutBody {
+    @apply
+      bg-gradient-to-r from-bg-1 to-bg-2     
+    }
+    .gLayout {
+      @apply
+        overflow-hidden
+    }
+
+
+  .gCardsManager {
+    @apply
+    overflow-x-hidden
+    max-w-full
+    container 
+    mx-auto 
+    px-0
+
+  }
+  .gSidebar {
+    @apply
+      left-0 
+      top-0 
+      h-screen
+      fixed
+      bg-sidebar-bg
+      /* transition-transform
+      duration-500 */
+      
+  }
+          .gSidebarMenu {
+            @apply
+            w-48 
+            p-4
+
+            /* border-r */
+            /* border-gray-200 h-screen */
+          }
+                  .gSidebarMenuButton {
+                    @apply
+                    w-full 
+                    text-left 
+                    px-4 
+                    py-2 
+                    text-base
+                    text-sm
+                    /* font-medium */
+                    font-semibold 
+                    rounded-md
+                    transition-colors 
+                    duration-200
+                  }
+                  .gSidebarMenuButtonActive {
+                    @apply
+
+                  bg-sidebar-menu-btn-active-bg
+                  text-sidebar-menu-btn-active-text
+                  }
+                  .gSidebarMenuButtonInActive {
+                    @apply
+                  text-sidebar-menu-btn-inactive-text
+                  hover:bg-sidebar-menu-btn-inactive-bg-hover
+                  hover:text-sidebar-menu-btn-inactive-text-hover
+                  }
+                  .gSidebarMenuSeparator {
+                    @apply
+                    my-4 border-t
+                  border-sidebar-menu-separator
+                  }
+                  .gSidebarMenuBottomButton {
+                    @apply
+                    font-semibold
+                    /* text-base */
+
+
+                    block 
+                    px-4 
+                    py-2 
+                    text-sm 
+                    text-sidebar-menu-bottom-btn-text
+                    rounded-md 
+                    hover:bg-sidebar-menu-bottom-btn-bg-hover
+                    hover:text-sidebar-menu-bottom-btn-text-hover
+                    transition-colors 
+                    duration-200
+                  }
+
+
+  .gNavbarPanel {
+    @apply
+      p-4
+      /* left-0  */
+      top-0 
+      /* bottom-0 */
+      
+      h-screen
+      fixed
+      bg-nav-panel-bg
+
+      transition-transform
+      duration-300
+      ;
+  }
+          .gNavbarUl {
+            @apply
+              space-y-8 place-items-center;
+          }
+          .gNavbarButton {
+            @apply
+              size-[clamp(20px,10vw,50px)]
+              border-6 border-transparent
+              hover:bg-nav-panel-button-hover
+              transition-all duration-200
+              hover:scale-105
+              active:scale-95
+              /* rounded-4xl */
+                rounded-2xl
+              flex items-center justify-center;
+                  }
+              .gNavbarButtonActive {
+                @apply
+                  bg-nav-panel-button-active;
+              }
+              
+              .gNavbarButtonInactive {
+                @apply
+                  bg-nav-panel-button;
+              }
+
+          .gMenuButton {
+            @apply
+              fixed
+              bottom-2
+              left-2
+
+
+              size-[clamp(24px,14vw,65px)]
+
+              bg-nav-panel-toggle-button-bg
+              space-y-8
+              border-6 border-transparent
+              hover:bg-nav-panel-button-hover
+              transition-all duration-200
+              hover:scale-105
+              active:scale-95
+              rounded-2xl
+              flex items-center justify-center;
+                  }
+              .gNavbarButtonActive {
+                @apply
+                  bg-nav-panel-button-active;
+              }
+              
+              .gNavbarButtonInactive {
+                @apply
+                  bg-nav-panel-button;
+              }
+
+
+  .gCardsGridHanziMode {
+    @apply
+    
+
+    ml-[clamp(40px,18vw,120px)]
+    /* mr-[clamp(40px,18vw,120px)] */
+    max-w-fit
+    relative
+    
+      grid 
+
+      grid-cols-1
+      min-[260px]:grid-cols-2
+      min-[380px]:grid-cols-3
+      min-[420px]:grid-cols-4
+      min-[460px]:grid-cols-5
+      /* min-[680px]:grid-cols-6
+      min-[880px]:grid-cols-7 */
+      
+
+
+      /* grid-cols-3 */
+
+
+      sm:grid-cols-6 
+      md:grid-cols-7 
+      lg:grid-cols-14 
+      xl:grid-cols-18
+                    
+
+      
+      /* transition-all duration-100 ease-in-out
+      gap-5 pb-[400px]
+      px-[clamp(20px,8vw,140px)]; */
+      ;
+
+
+  }
+    .gCardsGridExploreMode {
+    @apply
+
+
+    
+
+    ml-[clamp(40px,18vw,120px)]
+    /* mr-[clamp(40px,18vw,120px)] */
+    max-w-fit
+    relative
+    /* justify-items-center */
+
+
+
+
+      grid 
+
+      grid-cols-1
+      min-[620px]:grid-cols-2
+      min-[860px]:grid-cols-3
+      min-[990px]:grid-cols-4
+      min-[1290px]:grid-cols-5
+      min-[1490px]:grid-cols-6
+
+      ;
+
+
+  }
+
+
+  .gCard {
+    @apply
+      place-items-center
+      rounded-2xl 
+      w-fit 
+      h-fit 
+      relative
+      min-w-max max-w-full
+      ;
+
+  }
+    .gCardHanziMode {
+    @apply
+      my-2
+      mx-2    
+      bg-card-origin-bg  
+      shadow-lg 
+      shadow-card-origin-bg-shadow
+      ;
+    }
+    .gCardExploreMode {
+    @apply
+
+      p-2 pt-0
+      place-items-center
+      bg-card-explore-bg  
+      shadow-lg 
+      shadow-card-explore-bg-shadow
+
+      ;
+    }
+          .gCardMoveButtonContainerExplore {
+            @apply
+              min-w-8/10
+
+              flex items-center justify-center
+
+              place-items-center
+              ;
+
+
+          }
+                  .gCardMoveButtonExplore {
+                    @apply
+                      border-6 border-transparent
+                      bg-card-explore-move-btn
+                      hover:bg-card-explore-move-btn-hover
+                      transition-all duration-500
+
+                      hover:scale-105
+                      active:scale-95
+                      rounded-b-4xl
+                      left-0 top-0 right-0
+                      
+
+                      h-12 
+                      /* w-50 */
+                      w-8/10
+                      /* place-items-center */
+
+
+                      ;
+                  }
+          .gCardVoicePlayContainerExplore {
+            @apply
+            /* hidden group-hover:block */
+            py-2 my-0 px-4
+             place-items-center
+             text-center
+             
+
+             ;
+          }
+                  .gCardVoicePlayButtonExplore {
+                    @apply
+                            /* text-4xl  */
+                            /* text-center */
+
+                        
+                            text-[clamp(1.5rem,2vw,2rem)] 
+
+                            text-card-text 
+                            text-shadow-lg/10
+                            text-shadow-card-text-shadow
+                            border-6 border-transparent
+                            bg-transparent
+                            hover:bg-card-play-voice
+
+
+                            transition-all duration-200
+                            hover:scale-105
+                            active:scale-95
+                            rounded-4xl
+                            px-2 
+                            py-0
+                            my-0
+                            ;
+                            
+                  }
+          .gCardChineseWordContainerExplore {
+            @apply
+            
+            p-4 
+            pt-0 pb-2 px-2
+            text-center
+            
+            ;
+          }
+
+                  .gCardChineseWordCaptionExplore {
+                    
+                    @apply
+                            /* text-[clamp(4rem,8vw,12rem)] */
+                          
+                            /* text-[clamp(1rem,8vw,2rem)] */
+                            text-shadow-card-text-shadow
+                            /* group-hover:text-[clamp(6rem,6vw,8rem)] */
+
+                            whitespace-nowrap
+                            transition-all duration-500
+                            text-center text-card-text text-shadow-lg/20
+
+
+                            font-medium
+
+                            text-[clamp(4rem,3vw,4rem)]
+                            p-0 m-0
+
+                        
+                            ;
+                  }
+
+          .gCardTranslationContainerExplore {
+            @apply
+            /* px-2  */
+            pb-4 pt-0 m-0
+            /* transition-all duration-500 */
+
+              max-w-[clamp(180px,8vw,190px)]
+              text-center
+              place-items-center
+
+
+
+              ;
+          }
+                    .gCardTranslationCaptionExplore {
+                      @apply
+                      /* transition-all duration-500 */
+                      /* text-2xl */
+                      text-[clamp(1rem,2vw,1rem)]
+                      /* place-items-center */
+
+
+
+                      font-semibold
+                      
+                      
+              
+                              text-center 
+                              text-card-text 
+                              text-shadow-lg/10
+                              text-shadow-card-text-shadow
+                              ;
+                          }
+
+    .gCardPopup {
+    @apply
+      bg-card-popup-bg  
+      shadow-lg 
+      shadow-card-popup-bg-shadow
+
+      
+      ;
+    }
+          .gCardMoveButtonContainer {
+            @apply
+              min-w-8/10
+              flex items-center justify-center
+
+              place-items-center
+              ;
+
+
+          }
+                  .gCardMoveButton {
+                    @apply
+                      border-6 border-transparent
+                      bg-card-popup-move-btn
+                      hover:bg-card-popup-move-btn-hover
+                      transition-all duration-500
+
+                      hover:scale-105
+                      active:scale-95
+                      rounded-b-4xl
+                      left-0 top-0 right-0
+                      
+
+                      h-12 
+                      /* w-50 */
+                      w-8/10
+                      place-items-center
+
+
+                      ;
+                  }
+          .gCardVoicePlayContainer {
+            @apply
+            /* hidden group-hover:block */
+            py-2 my-0 px-4
+             place-items-center
+             text-center
+             
+             ;
+          }
+                  .gCardVoicePlayButton {
+                    @apply
+                            /* text-4xl  */
+                        
+                            text-[clamp(1.5rem,2vw,2rem)] 
+
+                            text-card-text 
+                            text-shadow-lg/10
+                            text-shadow-card-text-shadow
+                            border-6 border-transparent
+                            bg-transparent
+                            hover:bg-card-play-voice
+
+
+                            transition-all duration-200
+                            hover:scale-105
+                            active:scale-95
+                            rounded-4xl
+                            px-2 
+                            py-0
+                            my-0
+                            ;
+                            
+                  }
+          .gCardChineseWordContainer {
+            @apply
+            
+            p-4 
+            
+            ;
+          }
+          .gCardChineseWordContainerPopup {
+            @apply
+            
+            pt-0 pb-2 px-2
+            
+            ;
+          }
+                  .gCardChineseWordCaption {
+                    
+                    @apply
+                            /* text-[clamp(4rem,8vw,12rem)] */
+                            text-[clamp(2rem,3vw,2rem)]
+                            /* text-[clamp(1rem,8vw,2rem)] */
+                            text-shadow-card-text-shadow
+                            /* group-hover:text-[clamp(6rem,6vw,8rem)] */
+
+                            whitespace-nowrap
+                            transition-all duration-500
+                            text-center text-card-text text-shadow-lg/20
+
+
+                            font-medium
+
+                        
+                            ;
+                  }
+                  .gCardChineseWordCaptionPopup {
+                    @apply
+                            /* text-[clamp(4rem,6vw,6rem)] */
+                            text-[clamp(4rem,3vw,4rem)]
+                            /* font-medium */
+                            /* p-0 m-0 */
+                            p-0 m-0
+
+
+
+                            ;
+
+
+                  }
+
+          .gCardTranslationContainer {
+            @apply
+            px-2 pb-4 pt-0 m-0
+            /* transition-all duration-500 */
+
+              max-w-[clamp(180px,8vw,190px)]
+              text-center
+              
+
+
+              ;
+          }
+                    .gCardTranslationCaption {
+                      @apply
+                      /* transition-all duration-500 */
+                      /* text-2xl */
+                      text-[clamp(1rem,2vw,1rem)]
+
+
+
+                      font-semibold
+                      
+                      
+              
+                              text-center 
+                              text-card-text 
+                              text-shadow-lg/10
+                              text-shadow-card-text-shadow
+                              ;
+                          }
+  }
+
+/* Tailwind classess  -----------------------------------------------------*/
+
+
+
+/* loading animation -----------------------------------------------------*/
+
+/* From Uiverse.io by _5797 */ 
+.loader-wrapper {
+  font-size:xx-large;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-text);
+  user-select: none;
+  gap: 10px;
+}
+
+
+.letter-wrapper {
+  display: flex;
+  gap: 1px;
+}
+.loader-letter {
+  display: inline-block;
+  opacity: 0.4;
+  transform: translateY(0);
+  animation: loader-letter-anim 2s infinite;
+  z-index: 1;
+  border-radius: 50ch;
+  border: none;
+}
+
+.loader-letter:nth-child(1) {
+  animation-delay: 0s;
+}
+.loader-letter:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.loader-letter:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.loader-letter:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.loader-letter:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.loader-letter:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.loader-letter:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.loader-letter:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.loader-letter:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.loader-letter:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+@keyframes loader-letter-anim {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  40% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+}
+
+
+/* loading animation -----------------------------------------------------*/
+

@@ -1,0 +1,330 @@
+'use client';
+
+// import { useRouter } from 'next/navigation';
+
+
+
+import LoadingAnimation from "@/app/components/loading_animation/LoadingAnimation";
+import Sidebar from "@/app/components/sidebar/Sidebar";
+import Card from "@/app/components/card/Card";
+
+import { HoverPopup } from "@/app/components/hover_card/HoverPopup";
+
+import { useUserData } from "@/hooks/useUserData";
+import { useAllTabs } from "@/hooks/useAllTabs";
+
+import { useDataSet } from "@/hooks/useDataSet"
+
+// import { useJsonData } from '@/hooks/useJsonData';
+
+
+import { useState, 
+            useRef, 
+            useCallback, 
+            useEffect } from "react";
+
+type Card = {
+    uid: string,
+    hskLevel: string,
+    tabInOrder: number,
+    word: string,
+    pinyin: string,
+    translation: string,
+    voice_file: string,
+};
+
+type CurrentTab = {
+    hskLevel: string,
+    inOrder: number,
+    cards: Card[],
+};
+
+import { useLayout  as useLayoutUntyped  } from "@/app/context/LayoutContext";
+interface LayoutReturnType {
+    oldHskLevel: string;
+    setOldHskLevel: (value: string) => void;
+    allJsonsFetched: boolean;
+    sidebarOpen: boolean;
+    setSidebarOpen: (value: boolean) => void;
+    contentOffsetLeft: number;
+    isLoading: boolean;
+    setIsLoading: (value: boolean) => void;
+    activeTabId: number;
+    setActiveTabId: (value: number) => void;
+    currentTab: CurrentTab; 
+    setCurrentTab: (value: CurrentTab) => void;
+}
+const useLayout = useLayoutUntyped as () => LayoutReturnType;
+
+
+
+function setTheme(theme:string) {
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
+}
+
+
+// ─── Вспомогательный компонент: пустой список ────────────────────────────────
+
+function EmptyState() {
+    return (
+        <div className="flex flex-col items-center justify-center py-20 text-slate-400 select-none">
+            <svg className="w-10 h-10 mb-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <p className="text-[15px] font-medium text-slate-500">Список пуст</p>
+            <p className="text-[13px] mt-1">Перенесите карточки из других вкладок</p>
+        </div>
+    );
+}            
+
+
+export default function CardsManager() {
+    const dataSate = useDataSet();
+    // const router = useRouter();
+
+
+    const { allJsonsFetched } = useLayout();
+
+    const { userDexie } = useUserData();
+
+    const { allTabsHook, 
+        // updateAllTabsDexie,
+        updateCardTabInOrderDexie,
+                        } = useAllTabs();
+
+    const {
+                sidebarOpen,
+                setSidebarOpen,
+            } = useLayout();
+
+
+    // -- Experimenting with "ContentOffset Value"
+    const {
+                contentOffsetLeft,
+                // contentWidth,
+            } = useLayout();
+
+    const {
+                isLoading, 
+                setIsLoading,
+            } = useLayout();
+
+
+    const {
+                activeTabId, 
+                setActiveTabId
+            } = useLayout();
+
+
+    const { currentTab, setCurrentTab } = useLayout();
+
+    // const [
+    //             isInitialized, 
+    //             setIsInitialized,
+    //  ] = useState(false);
+
+    const [openMoveCardId, setOpenMoveCardId] = useState(null);
+
+
+
+    // ── Переключить вкладку ────────────────────────────────────────────────────
+    const switchTab = useCallback((id:number) => {
+
+        function ssetTabs(newTabId:number) {
+            if (allTabsHook && (allTabsHook.length > 0)) {              
+                
+                setOpenMoveCardId(null);
+                setActiveTabId(newTabId);
+                const fuckingTab = allTabsHook.find((t) => t.inOrder === newTabId);
+                if (fuckingTab !== undefined) setCurrentTab(fuckingTab);
+
+            }
+                
+        }
+
+        ssetTabs(id);
+    }, [
+        allTabsHook,
+        setActiveTabId,
+        setCurrentTab,
+
+        ]);
+
+    const moveCard = useCallback((cardUid: string, 
+                                toTabInOrder: number,
+                                hskLevel: string
+                            ) => {
+        // console.log("moveCard");
+
+        let isLastTab = false;
+        if (toTabInOrder > allTabsHook.length) {
+            isLastTab = true;
+            console.log("ffff it's the last tab wey");
+        }
+
+        updateCardTabInOrderDexie(cardUid, 
+                                    toTabInOrder, 
+                                    isLastTab, 
+                                    hskLevel
+                                )
+        .then(() => {
+            setOpenMoveCardId(null);
+        })
+     
+    setOpenMoveCardId(null);
+    }, [
+        allTabsHook,
+        updateCardTabInOrderDexie
+    ]);
+
+    // useEffect(() => {
+    //     router.refresh();
+    //     console.log("refresh");
+
+
+    // }, [
+    //     router
+    // ]);
+
+
+
+    useEffect(() => {
+        if (!allJsonsFetched) return;
+        async function ssetCurrentTab() {
+            const fuckingTab = allTabsHook.find((t) => t.inOrder === activeTabId);
+            if (fuckingTab !== undefined) setCurrentTab(fuckingTab);
+        }
+
+        // ssetCurrentTab();
+
+        if (allTabsHook && (allTabsHook.length > 0)) ssetCurrentTab();
+
+        if (userDexie && (allTabsHook && isLoading)) {
+            if (allTabsHook.length > 0) {
+            // console.log("allTabsHook", allTabsHook);
+                    setTheme(userDexie.theme);
+                    setIsLoading(false);
+                    
+                    // setIsInitialized(true);
+            };
+
+        };
+
+
+
+
+
+    }, [isLoading, 
+        setIsLoading,
+        allTabsHook,
+        userDexie,
+        setCurrentTab,
+        currentTab,
+        activeTabId,
+        // isInitialized,
+        // setIsInitialized
+        allJsonsFetched,
+
+    ])
+
+
+    return(
+        <>
+        <div className="gCardsManager">
+            {/* ----------  Sidebar ---------------------------------------------------------*/}
+            <button
+                    key={"menuBtn"}
+                    onClick={() => setSidebarOpen(!sidebarOpen)}
+                    className="
+                    gMenuButton
+                    z-50
+                    "
+                    >
+            </button>
+            <Sidebar className="gSidebar" />
+
+             {/* ── Navbar ────────────────────────────────────────────────────────── */}    
+            <div className="gNavbarPanel"
+                    style={{
+                            left: contentOffsetLeft
+                    }}>                
+                <ul className="gNavbarUl">
+                    {allTabsHook?.map((tab) => {
+                        const isActive = tab.inOrder === activeTabId;
+                        return (
+                            <li 
+                            key={tab.inOrder + "_navLink"}
+                            >                       
+                                <button
+                                    // key={tab.inOrder + "_navBtn"}
+                                    onClick={() => switchTab(tab.inOrder)}
+                                    className={`gNavbarButton
+                                                    ${isActive
+                                                    ? "gNavbarButtonActive"
+                                                    : "gNavbarButtonInactive"}`}>
+                                </button>
+                            </li>
+
+                                )
+                    })}
+                </ul>
+                    
+            </div>
+
+            {/* ── Контент ───────────────────────────────────────────────────────── */}
+            {isLoading ? (
+                            <div className="m-30">
+                                    <LoadingAnimation />
+                            </div>
+                    ) : (
+            <div >
+                {currentTab?.cards?.length === 0 ? (
+                        <EmptyState />
+                    ) : (
+                        <div 
+                            style={{
+                                left: contentOffsetLeft
+                            }}
+
+                            className="gCardsGrid">
+                                {currentTab?.cards?.map((card) => {
+                                    
+                                    // const isOpen = openMoveCardId === card.uid;
+
+                                    return ( <div key={card.uid + "cardOr"}>
+                                    {/* <> */}
+                                     <HoverPopup openDelayMs={3200} closeDelayMs={300}
+                                    //  key={card.uid + "HoverPop"}
+                                     >
+
+                                    <Card
+                                    // key={card.uid + "cardOr"}
+                                    // key={card.uid} 
+                                    item={card} 
+                                    moveCard={moveCard}
+                                    currentTabId={currentTab.inOrder}
+                                    />
+
+                                    </HoverPopup >
+                                    {/* </> */}
+                                    </div>
+
+                                    )
+                                
+
+                                            
+                                        
+                                    
+                                })}
+                        </div>
+                 )}
+                    
+            </div>)}
+        
+        </div>
+        </>
+    )
+}
